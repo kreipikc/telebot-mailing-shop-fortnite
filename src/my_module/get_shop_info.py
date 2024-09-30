@@ -58,13 +58,15 @@ def load_img(list_item: List[List[str]]) -> None:
     print("Download done!")
 
 
-# Оптимальное соотношение rows & cols (1:1)
+# Оптимальное соотношение rows & cols
 def find_optimal_dimensions(num_images: int) -> List[int]:
     square_root = math.sqrt(num_images)
-    if float(int(square_root)) < square_root:
-        return [int(square_root) + 1, int(square_root) + 1]
-    else:
+    if square_root == float(int(square_root)):
         return [int(square_root), int(square_root)]
+    elif square_root % 1 >= 0.5:
+        return [int(square_root) + 1, int(square_root) + 1]
+    elif square_root % 1 < 0.5:
+        return [int(square_root) + 1, int(square_root)]
 
 
 # Создание коллажа из загруженных картинок
