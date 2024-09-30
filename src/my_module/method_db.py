@@ -60,8 +60,15 @@ def delete_mailing(id_user: int) -> None:
 
 
 # Получаем список всех пользователей с подпиской на рассылку
-def get_mailing_user() -> List[Tuple[int]]:
+def get_mailing_user_all() -> List[Tuple[int]]:
     conn, cur = open_db()
     cur.execute("SELECT chat_id FROM user WHERE mailing = 1")
+    user = cur.fetchall()
+    return user
+
+
+def get_profile(user_id: int) -> List[Tuple[int]]:
+    conn, cur = open_db()
+    cur.execute(f"""SELECT * FROM user WHERE user_id = {user_id}""")
     user = cur.fetchall()
     return user
