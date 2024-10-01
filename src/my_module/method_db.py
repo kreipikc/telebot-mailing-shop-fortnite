@@ -16,7 +16,7 @@ def created_db() -> None:
 
 # Открытие БД
 def open_db() -> [Connection, Cursor]:
-    conn_local = sqlite3.connect('../data/database/user.db')
+    conn_local = sqlite3.connect("../data/database/user.db")
     cur_local = conn_local.cursor()
     return conn_local, cur_local
 
@@ -62,7 +62,7 @@ def delete_mailing(id_user: int) -> None:
 # Получаем список всех пользователей с подпиской на рассылку
 def get_mailing_user_all() -> List[Tuple[int]]:
     conn, cur = open_db()
-    cur.execute("SELECT chat_id FROM user WHERE mailing = 1")
+    cur.execute("""SELECT chat_id FROM user WHERE mailing = 1""")
     user = cur.fetchall()
     return user
 
