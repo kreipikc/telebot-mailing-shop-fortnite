@@ -84,7 +84,7 @@ schedule_thread.daemon = True  # Устанавливаем демонский �
 schedule_thread.start()
 
 if __name__ == "__main__":
-    time_for_send = "00:19"
+    time_for_send = "03:01"
     schedule.every().day.at(time_for_send).do(function_to_run)
 
     # Начинаем обработку запросов
